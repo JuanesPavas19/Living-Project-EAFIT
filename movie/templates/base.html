@@ -1,0 +1,94 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title> {% block titulo %}  {% endblock %} </title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.0-beta1 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand navbar-light bg-light">
+        <div class="nav navbar-nav">
+            <a class="nav-item nav-link active" href="{% url 'home' %}">Home</a>
+            <a class="nav-item nav-link active" href="{% url 'about' %}">About</a>
+            <a class="nav-item nav-link active" href="{% url 'dietas' %}">Dietas</a>
+            <a class="nav-item nav-link active" href="{% url 'rutinas' %}">Rutinas</a>
+            
+        </div>
+    </nav>
+  <div class="container">
+    <div class="row">
+        <div class="col-12">
+            {% block contenido %}  {% endblock %}
+        </div>
+    </div>
+  </div>
+  </section>
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <div class="row mt-3">
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fas fa-gem me-3">Living</i>
+          </h6>
+          <p>
+            Cuida tu salud con nuestra ayuda, en poco tiempo y de la forma indicada.
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fas fa-gem me-3">Servicios</i>
+          </h6>
+          <p>
+            <a href="dietas" class="text-reset">Dietas</a>
+          </p>
+          <p>
+            <a href="rutinas" class="text-reset">Rutinas</a>
+          </p>
+          <p>
+            <a href="comentarios" class="text-reset">Comentarios</a> <!--sin crear-->
+          </p>
+        </div>
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fas fa-gem me-3">Contacto</i>
+          </h6>
+          <p><i class="fas fa-home me-3"></i> Medellín, Antioquia, Colombia.</p>
+          <p>
+            <i class="fas fa-envelope me-3"></i>
+            info@example.com
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2022 Copyright:
+    <a class="text-reset fw-bold" href="">Living</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+    integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous">
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+    integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>
