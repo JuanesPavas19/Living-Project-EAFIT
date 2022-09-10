@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block titulo %} Rutinas - Living {% endblock %}
+
+{% block contenido %} 
+<div class="card">
+    <div class="card-header">
+        Rutinas
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Rutinas</h4>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Imagen</th>
+                        <th scope="col">Revisar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Rutina para Principiantes</td>
+                        <td>Indicado e ideal para aquellas personas que apneas empiezan a desarrollar una constante de entrenamiento y ejercicio, además está enfocada para personas que desean bajar de peso, al igual que mejorar su acondicionamiento metabólico.</td>
+                        <td>Imagen.jpg</td>
+                        <td><a class="btn btn-success" href="rutinas/r1" role="button">Ver</a></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Rutina Intensidad Intermedia</td>
+                        <td>Esta rutina está enfocada en aquellas personas que desean aumentar el tiempo en el que realizan ejercicio, para más adelante aumentar también la intensidad. Con esta rutina se aumentan la capacidad cardiovascular y resistencia física al trabajo.</td>
+                        <td>Imagen.jpg</td>
+                        <td><a class="btn btn-success" href="rutinas/r2" role="button">Ver</a></td> <!--sin crear-->
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Rutina de Alta Intensidad</td>
+                        <td>Esta rutina está enfocada en aquellas personas que ya llevan un tiempo prolongado entrenando y a una intensidad considerable, esta rutina es ideal para aumentar capacidades físicas y musculares en las personas.</td>
+                        <td>Imagen.jpg</td>
+                        <td><a class="btn btn-success" href="rutinas/r3" role="button">Ver</a></td> <!--sin crear-->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+    <div class="card-footer text-muted">
+        Footer
+    </div>
+</div>
+{% endblock %}
