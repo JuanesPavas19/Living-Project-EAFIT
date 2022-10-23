@@ -2,17 +2,23 @@
 {% block titulo %} Home - Living {% endblock %}
 
 {% block contenido %} 
+{% load static %}
 <h1></h1>
-<div class="p-5 bg-light">
-    <div class="container">
-        <h1 class="display-3">Bienvendio a Living</h1>
+<div class="p-5 bg-light" >
+    <div class="container"><br>
+        <h1 class="display-3" style="color: rgb(255, 222, 37);" >Bienvendio a
+            <img src='{% static "img/liv.png" %}' alt="LIVING" width="150px" height="150px">
+            </h1>
+            <br><br>
             <p class="lead">
                 Cuida tu salud con nuestra ayuda, en poco tiempo y de la forma indicada.
             </p>
             <hr class="my-2">
             <p>Inicialmente serás llevado a un formulario que te preguntará tus datos básicos y así comprobar tu estado de salud, IMC, etc.</p>
             <p class="lead">
-                <a class="btn btn-success" href="form" role="button">Revisar Mi Condición</a>
+                <a class="btn btn-success" style="
+                background-color: rgb(45, 141, 197); border-color: rgb(236, 236, 16);" 
+                href="form" role="button">Revisar Mi Condición</a>
             </p>
     </div>
 </div>
