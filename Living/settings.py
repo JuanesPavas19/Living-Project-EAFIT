@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-6-&sms%0%xtbsprt+6to%-l4m^(mgao0ekt8u5l$gdb&l#v1l7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['35.223.134.245']
+ALLOWED_HOSTS = []
 
 MESSAGE_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage"
 
@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'Living.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'prueba3',
+        'NAME': 'prueba4',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',
