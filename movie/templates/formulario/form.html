@@ -1,35 +1,64 @@
+{% extends "base.html" %}
+
+{% block titulo %} ¿Cuál es mi condición de Salud? - Living {% endblock %}
+
+{% block contenido %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Condición de Salud</title>
+
   <link rel="stylesheet" href='{% static "css/estilo.css" %}' type='text/css' ">
-</head>
  
-<body>
-    <section class= "form-registro">
-        <h4> ¿En que condición me encuentro? </h4>
-        <input class="controles" type = "int" name " edad " id ="edad" placeholder="¿Cuantos años tienes?">
-        <input class="controles" type = "int" name " altura " id ="altura" placeholder="¿Cuanto mides?">
-        <input class="controles" type = "int" name " peso " id ="peso" placeholder="¿Cuál es tu peso?">
-        <input class="controles" type = "text" name " comida " id ="comida" placeholder="¿Que prefieres comer?">
-        <input class="controles" type = "text" name " deporte " id ="deporte" placeholder="¿Realizas algun tipo de deporte?">
-<input class="controles" type = "text" name " alergia " id ="alergia" placeholder="¿Tienes algun tipo de alergia?">
-<input class="controles" type = "text" name " condicionfisica " id ="condicionfisica" placeholder="¿Tienes algun tipo de enfermedad que te impida comer o realizar algun tipo de actividad deportiva?">
-        <input class="controles" type = "text" name " sexo " id ="sexo" placeholder="¿Con que genero te identificas?">
-        <center><input class="botones" type="submit" value="REGISTRAR"></center>
-        <script>
-          alert('Pilas :Sobre Peso')
-  </script>
-    </section>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="{ % static 'js/control.js' % }"></script>
-</body>
-</html>
-<!--
-  <script>
-                alert('Pilas :Sobre Peso')
-        </script>
-  <input class="controles" type = "text" name " deporte " id ="deporte" placeholder="¿Realizas algun tipo de deporte?">
-<input class="controles" type = "text" name " alergia " id ="alergia" placeholder="¿Tienes algun tipo de alergia?">
-<input class="controles" type = "text" name " condicionfisica " id ="condicionfisica" placeholder="¿Tienes algun tipo de enfermedad que te impida comer o realizar algun tipo de actividad deportiva?">-->
+  <body style="background-color: white">
+    <div class="row">
+        <div class="col-12 col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header">
+                    Revisar Mi Condición
+                </div>
+                <div class="card-body">
+                  <h4 class="card-title">Ingresa tus Datos</h4>
+  
+                  <form enctype="multipart/form-data" method="post">
+                      {% csrf_token %}
+                      {% for campo in formulario %}
+                        <div class="mb-3">
+                          <label for="" class="form-label">{{ campo.label }}</label>
+                          <input type="{{ campo.field.widget.input_type }}"
+                            class="form-control" 
+                            name="{{ campo.name }}" id="" aria-describedby="helpId" placeholder="{{ campo.label }}">
+                        </div>
+                        <div class="col-12 help-text">{{ campo.errors }}</div>
+                        {% endfor %}
+  
+  
+                  <div class="d-flex justify-content-end">
+                      <button type="reset" value="Cancelar" class="btn btn-secondary">Cancelar</button>&nbsp;
+                      <button type="submit" id="btnEnviar" class="btn btn-success">Enviar</button>
+                  </div>
+                  </form>
+              </div>
+              <div class="card-footer text-muted">
+                  <!-- Links de olvidar contraseña o condiciones-->
+              </div>
+          </div>
+      </div>
+  </div>
+  
+  
+  <table id="tablacontactos">
+  
+  </table>
+          <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            {% if messages %}
+                {% for m in messages %}
+                    <script>
+                      Swal.fire({
+                        "title": "{{m}}",
+                        "text": "{{m}}",
+                        "icon": "success"
+                      })
+                    </script>
+                {% endfor %}
+            {% endif %}
+
+  </body>
+  {% endblock %}
