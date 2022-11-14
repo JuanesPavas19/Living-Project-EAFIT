@@ -8,10 +8,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+
   <!-- Bootstrap CSS v5.2.0-beta1 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
     integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-
+    
+  
 </head>
 
 <body><!--  navbar-light bg-light 
@@ -20,30 +22,41 @@
   background-color: rgba(21, 104, 100, 0.747);
   background-color: rgb(45, 141, 197);
 -->
+
+
+
+
+
     <nav class="navbar navbar-expand"
       style="
-      background-color: rgb(45, 141, 197);
+      background-color: rgb(27, 75, 163);
       font-style: italic ;
       font-weight: bolder;
       text-decoration: underline;
       ">
         <div class="nav navbar-nav">
-            <a class="nav-item nav-link active" href="{% url 'home' %}">
+          
+            <strong></strong><a class="nav-item nav-link active" href="{% url 'home' %}">
             <img src='{% static "img/liv.png" %}' alt="LIVING" width="50px" height="50px">
             </a>
-            <a class="nav-item nav-link active" href="{% url 'home' %}">
+            <strong><a class="nav-item nav-link active" href="{% url 'home' %}"></strong>
               <img src='{% static "img/home.png" %}' alt="HOME" width="90px" height="50px">
             </a>
-            <a class="nav-item nav-link active" style="background-color: white; font-size: 26px;" href="{% url 'about' %}">QUIENES SOMOS</a>
-            <a class="nav-item nav-link active" style="background-color: white; font-size: 26px;" href="{% url 'dietas' %}">DIETAS</a>
-            <a class="nav-item nav-link active" style="background-color: white; font-size: 26px;" href="{% url 'rutinas' %}">RUTINAS</a>
-            
+            <strong><a class="nav-item nav-link active" style="background-color: white; font-size: 26px;" href="{% url 'about' %}">QUIENES SOMOS</a></strong>
+            <strong><a class="nav-item nav-link active" style="background-color: white; font-size: 26px;" href="{% url 'dietas' %}">DIETAS</a></strong>
+            <strong><a class="nav-item nav-link active" style="background-color: white; font-size: 26px;" href="{% url 'rutinas' %}">RUTINAS</a></strong>
+
+            <strong><a class="nav-item nav-link active" style="background-color: white; font-size: 26px;" href="{% url 'register' %}">REGISTRAR</a></strong>
+            <!--<strong><a class="nav-item nav-link active" style="background-color: white; font-size: 26px;" href="{% url 'contacto' %}">Contacto</a></strong>-->
+            <strong><a class="nav-item nav-link active" style="background-color: white; font-size: 26px;" href="{% url 'contacto1' %}">CONTACTO</a></strong>
+          
         </div>
     </nav>
   <div class="container">
     <div class="row">
         <div class="col-12">
-            {% block contenido %}  {% endblock %}
+          <br>
+          {% block contenido %}  {% endblock %}
         </div>
     </div>
   </div>
@@ -68,13 +81,13 @@
             <i class="fas fa-gem me-3">Servicios</i>
           </h6>
           <p>
-            <a href="dietas" class="text-reset">Dietas</a>
+            <a href="{% url 'dietas' %}" class="text-reset">Dietas</a>
           </p>
           <p>
-            <a href="rutinas" class="text-reset">Rutinas</a>
+            <a href="{% url 'rutinas' %}" class="text-reset">Rutinas</a>
           </p>
           <p>
-            <a href="comentarios" class="text-reset">Comentarios</a> <!--sin crear-->
+            <a href="{% url 'contacto1' %}" class="text-reset">Comentarios</a> <!--sin crear-->
           </p>
         </div>
         <!-- Grid column -->
@@ -105,6 +118,25 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
     integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous">
   </script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+  {% if messages %}
+      {% for m in messages %}
+          <script>
+            Swal.fire({
+              "title": "{{m}}",
+              "text": "{{m}}",
+              "icon": "success"
+            })
+          </script>
+      {% endfor %}
+  {% endif %}
+          <!-- {{m}}
+          icons: succes, warning, question, error , info
+          -->
+
+
 </body>
 
 </html>
