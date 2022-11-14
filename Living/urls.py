@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from movie import views as movieViews
+#from movie import views as movieViews
 from django.urls import include
 
 urlpatterns = [
