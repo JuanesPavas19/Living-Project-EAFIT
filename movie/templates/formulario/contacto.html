@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block titulo %} Contacto - Living {% endblock %}
+
+{% block contenido %}
+{% load static %}
+
+
+
+<body style="background-color: white">
+    
+<div class="row">
+    <div class="col-12 col-md-6 offset-md-3">
+        <div class="card">
+            <div class="card-header">
+                Contactanos
+            </div>
+            <div class="card-body">
+                
+                <form action="" class="" method="post">
+                    <div class="mb-3">
+                    {% csrf_token %}
+                    
+                    <!--{{form}}Pasar a otro formtao-->
+                    <section class= "form-registro"><!-- {{formOferta}} sin estilos-->
+                        <h4 align="center"> Cuentanos... </h4>
+                        <input class="controles" type = "text" name = "nombre" id ="nombre" placeholder="Nombres Completos">
+                        <input class="controles" type = "email" name = "correo" id ="correo" placeholder="Correo Electrónico">
+                        <input class="controles" type = "text" name = "tipo_consulta" id ="tipo_consulta" placeholder="Tipo de Consulta">
+                        <input class="controles" type = "text" name = "mensaje" id ="mensaje" placeholder="Mensaje">
+                        {{mensaje}}
+                    </section>
+                    </div>
+                <div class="d-flex justify-content-end">
+                    <button type="reset" value="Cancelar" class="btn btn-secondary">Cancelar</button>&nbsp;
+                    <button type="submit" id="btnEnviar" class="btn btn-success">Enviar</button>
+                </div>
+                </form>
+                {{mensaje}}
+        
+            </div>
+            <div class="card-footer text-muted">
+                <!-- Links de olvidar contraseña o condiciones-->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<table id="tablacontactos">
+
+</table>
+</body>
+{% endblock %}
+<!--
+opciones_consulta = [
+    [0, "consulta"],
+    [1, "reclamo"],
+    [2, "sugerencia"],
+    [3, "felicitacion"]
+]
+class Contacto(models.Model):
+    nombre = models.CharField(max_length=50)
+    correo = models.EmailField()
+    tipo_consulta = models.IntegerField(choices=opciones_consulta)
+#    tipo_consulta = models.CharField(max_length=20)
+    mensaje = models.TextField()
+    avisos = models.BooleanField()
+
+    def __str__(self):
+        return self.nombre
+
+
+
+
+
+        <h4 align="center"> Cuentanos... </h4>
+                        <input class="controles" type = "text" name = "nombre" id ="nombre" placeholder="Nombres Completos">
+                        <input class="controles" type = "email" name = "correo" id ="correo" placeholder="Correo Electrónico">
+                        <select class="controles" type = "text" name = "tipo" id ="tipo" placeholder="Tipo de Consulta">
+                            <option>consulta</option>
+                            <option>reclamo</option>
+                            <option>sugerencia</option>
+                            <option>felicitacion</option>
+                        </select>
+                        <input class="controles" type = "text" name = "mensaje" id ="mensaje" placeholder="Mensaje">
+                        <input class="controles" type = "checkbox" name = "avisos" id ="avisos" placeholder="Avisos">
+    -->
