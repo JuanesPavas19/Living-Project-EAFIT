@@ -19,4 +19,11 @@ urlpatterns = [
 
     #formularios;
     path('form', views.form, name='form'),
+    path('register', views.register, name='register'),
+    path('login', views.login, name='login'),
+    
+    
+    
+    path('contacto', views.contacto, name='contacto'),
+    path('contacto1', views.contacto1, name='contacto1'),
 ]
