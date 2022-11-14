@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block titulo %} Rutinas - Living {% endblock %}
-
+{% block colornav %}rgb(26, 163, 33){% endblock %}
 {% block contenido %} 
 <div class="card">
     <div class="card-header">
@@ -23,7 +23,7 @@
                         <td>{{ rutina.nombre_rutina }}</td>
                         <td>{{ rutina.desc_rutina }}</td>
                         <td><a class="btn btn-success" style="
-                            background-color: rgb(27, 75, 163); border-color: rgb(236, 236, 16);" href="rutinas/{{ rutina.d_rutina }}" role="button">Ver</a></td>
+                            background-color: rgb(26, 163, 33); border-color: rgb(236, 236, 16);" href="rutinas/{{ rutina.d_rutina }}" role="button">Ver</a></td>
                     </tr>
                     {% endfor %}
                 </tbody>

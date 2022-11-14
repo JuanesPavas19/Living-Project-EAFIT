@@ -29,7 +29,7 @@
 
     <nav class="navbar navbar-expand"
       style="
-      background-color: rgb(27, 75, 163);
+      background-color: {% block colornav %} {% endblock %};
       font-style: italic ;
       font-weight: bolder;
       text-decoration: underline;
@@ -40,7 +40,7 @@
             <img src='{% static "img/liv.png" %}' alt="LIVING" width="50px" height="50px">
             </a>
             <strong><a class="nav-item nav-link active" href="{% url 'home' %}"></strong>
-              <img src='{% static "img/home.png" %}' alt="HOME" width="90px" height="50px">
+              <img src='{% static "img/icon1.png" %}' alt="HOME" width="90px" height="50px">
             </a>
             <strong><a class="nav-item nav-link active" style="background-color: white; font-size: 26px;" href="{% url 'about' %}">QUIENES SOMOS</a></strong>
             <strong><a class="nav-item nav-link active" style="background-color: white; font-size: 26px;" href="{% url 'dietas' %}">DIETAS</a></strong>
