@@ -1,8 +1,10 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .models import Dieta, Rutina
-from .forms import UsuarioForm, ContactoForm, ImcForm
+from .forms import UsuarioForm, ContactoForm, ImcForm, CustomUserCreationForm, DietaForm, RutinaForm
 from django.contrib import messages
+from django.contrib.auth import authenticate, login
+#from .static import recomendador
 
 # Create your views here.
 
@@ -24,15 +26,20 @@ def about(request):
 
 def dietas(request):
     dietas = Dieta.objects.all()
-    return render(request, 'dietas.html', {'dietas': dietas })
+    #data = recomendador
+    return render(request, 'dietas.html', {'dietas': dietas })#, {'data': data})
 
 def rutinas(request):
     rutinas = Rutina.objects.all()
-    return render(request, 'rutinas.html', {'rutinas': rutinas})
+    #data = recomendador
+    return render(request, 'rutinas.html', {'rutinas': rutinas})#, {'data': data})
+
 
 #dietas:
 def d1(request):
-    return render(request, 'dietas/d1.html')
+    #formulario = DietaForm(request.POST or None)
+    #messages.info(request, "Pronto podrás revisar todos tus elementos guardados.")
+    return render(request, 'dietas/d1.html')#, {'formulario': formulario})
 
 def d2(request):
     return render(request, 'dietas/d2.html')
@@ -71,30 +78,52 @@ def register(request):
     formulario = UsuarioForm(request.POST or None)
     if formulario.is_valid():
         formulario.save()
-        messages.success(request, "Datos Registrados","tus Datos fueron registrados con exito", "error")  # prueba de funcionalidad
+        messages.success(request, "Sus datos se completaron y registraron con éxito.")  # prueba de funcionalidad
         return redirect('home')
+    
+    
     return render(request, 'formulario/register.html', {'formulario': formulario})
 
-def login(request):
-    return render(request, 'formulario/login.html')
 
-def contacto(request):
+def registro(request):
     data = {
-        "form": ContactoForm()
+        'form': CustomUserCreationForm()
     }
-    if request.method == 'POST':
-        formulario = ContactoForm(data=request.POST)
+    if request.method=='POST':
+        formulario = CustomUserCreationForm(data=request.POST)
         if formulario.is_valid():
             formulario.save()
-            data["mensaje"] = "contacto guardado"
-        else:
-            data["form"] = formulario
-    return render(request, 'formulario/contacto.html', data)
+            user = authenticate(username=formulario.cleaned_data["username"], password=formulario.cleaned_data["password1"])
+            login(request, user)
+            messages.success(request, "Sus Datos fueron registrados con exito," "Bienvenido a Living")
+            #redrigir
+            return redirect(to="home")
+        data["form"] = formulario
+    return render(request, 'registration/registro.html', data)
 
-def contacto1(request):
+#def login(request):
+#    return render(request, 'formulario/login.html')
+
+#def contacto(request):
+#    data = {
+#        "form": ContactoForm()
+#    }
+#    if request.method == 'POST':
+#        formulario = ContactoForm(data=request.POST)
+#        if formulario.is_valid():
+ #           formulario.save()
+ #           data["mensaje"] = "contacto guardado"
+ #       else:
+ #           data["form"] = formulario
+ #   return render(request, 'formulario/contacto.html', data)
+
+def contacto(request):
     formulario = ContactoForm(request.POST or None)
     if formulario.is_valid():
             formulario.save()
-            messages.success(request, "Comentario Enviado")
-            return redirect('contacto1')
-    return render(request, 'formulario/contacto1.html', {'formulario': formulario})
+            messages.success(request, "Su comentario será revisado por nuestro grupo de trabajo")
+            return redirect('contacto')
+    return render(request, 'formulario/contacto.html', {'formulario': formulario})
+
+def revision(request):
+    return render(request, 'formulario/revision.html')

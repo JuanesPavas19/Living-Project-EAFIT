@@ -18,6 +18,12 @@
 <p>
     La avena te quita el hambre, evita el picoteo, mejora el estreñimiento, ayuda a que el cuerpo absorba menos calorías y, no solo esto, también a que queme más. Además, ayuda a estimular la tiroides, la glándula que se encarga de regular el metabolismo. Por ello, seguir una dieta en la que la avena tenga mucha presencia en los menús te puede ayudar a perder esos kilos que hasta ahora se te resisten. No se trata de comer solo avena, sino de potenciar su consumo dentro de una dieta ligera y equilibrada.
 </p>
+{% if user.is_authenticated %}
+<center><input name="" id="" class="btn btn-success" type="submit" value="Empezar"></center>
+
+{% else %}
 <center><a class="btn btn-success" href="{% url 'home' %}" role="button">Empezar</a></center>
+
+{% endif %}
 
 {% endblock %}

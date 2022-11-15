@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+
+{% block titulo %} Revisión de Salud - Living {% endblock %}
+{% block colornav %}rgb(27, 75, 163){% endblock %}
+
+{% block js %}
+<script>
+    function CalcularImc(peso, altura){
+
+        //var Imc = ((parseFloat(peso))/(((parseFloat(altura))/100)*((parseFloat(altura))/100)));
+        //document.getElementById("imc").innerHTML = Imc;
+
+
+        var floatEdad = parseFloat(peso);
+        var metroAlt = altura/100;
+        var floatAltura = parseFloat(metroAlt);
+        var Imc = floatEdad/((metroAlt)*(metroAlt));
+        Imc = Math.round(Imc*100)/100;
+        return Imc;
+        //alert("Su Indice de Masa Corporal es: "+Imc);
+        //document.getElementById("imc").innerHTML = Imc;
+
+    }
+    function RevisarCondicion(){
+        var altura = document.getElementById("altura").value;
+        var peso = document.getElementById("peso").value;
+    //IMC= (peso)/((altura/100)*(altura/100))
+    var imc= CalcularImc(peso, altura);
+    var title; 
+    var text;
+    var icon;
+    //icons: succes, warning, question, error , info
+    
+    if (imc < 18.5 && imc > 14.9 ){//Rango de Peso Insuficiente
+      title = "Su IMC es: "+imc;
+      text = "Rango de Peso Insuficiente";
+      icon = 'warning';
+    }else if(imc >= 18.5 && imc < 25.0){//Rango de Peso Normal o Saludable
+      title = "Su IMC es: "+imc;
+      text = "Rango de Peso Normal o Saludable";
+      icon = 'success';
+    }else if(imc >= 25.0 && imc < 30.0){//Rango de Sobrepeso
+      title = "Su IMC es: "+imc;
+      text = "Rango de Sobrepeso";
+      icon = 'warning';
+    }else if(imc > 29.9 && imc < 35.0){//Rango de Obesidad
+      title = "Su IMC es: "+imc;
+      text = "Rango de Obesidad";
+      icon = 'error';
+    }else{//Rango de Inconcordancia
+      title = "Datos Erroneos";
+      text = "Rango de Inconcordancia, Por favor verifica tus Datos";
+      icon = 'question';
+    }
+
+    
+    Swal.fire({
+      "title": title,
+      "text": text,
+      "icon": icon,
+      "showCancelButton": true,
+      "cancelButtonText": "Revisar los Datos",
+      "confirmButtonText": "Volver a Home",
+      "reverseButtons":true,
+      "confirmButtonColor": "blue",
+    })
+    .then(function(result){
+      if(result.isConfirmed){
+        window.location.href = "{% url 'home' %}"
+      }
+    })
+  }
+
+</script>
+{% endblock %}
+
+{% block contenido %}
+{% load static %}
+ 
+  <body style="background-color: white">
+    <div class="row">
+        <div class="col-12 col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header">
+                    Revisar Mi Condición
+                </div>
+                <div class="card-body">
+                  <h4 class="card-title">Ingresa tus Datos</h4>
+                  <p>Edad: <input type="number" name="" id="edad" class="form-control"></p>
+                  <p>Altura: <input type="number" name="" id="altura" class="form-control"></p>
+                  <p>Peso: <input type="number" name="" id="peso" class="form-control"></p>
+                  <p>Sexo: <input type="text" name="" id="sexo" class="form-control"></p>
+                  <p><input type="button" class="btn btn-success" onclick="RevisarCondicion()" value="Calcular"></p>
+                  <!--<p id="imc"></p>
+                      <form enctype="multipart/form-data" method="post">
+                      {% csrf_token %}
+                      {% for campo in formulario %}
+                        <div class="mb-3">
+                          <label for="" class="form-label">{{ campo.label }}</label>
+                          <input type="{{ campo.field.widget.input_type }}"
+                            class="form-control" 
+                            name="{{ campo.name }}" id="" aria-describedby="helpId" placeholder="{{ campo.label }}">
+                        </div>
+                        <div class="col-12 help-text">{{ campo.errors }}</div>
+                        {% endfor %}
+  
+  
+                  <div class="d-flex justify-content-end">
+                      <button type="reset" value="Cancelar" class="btn btn-secondary">Cancelar</button>&nbsp;
+                      <button type="submit" id="btnEnviar" class="btn btn-success">Enviar</button>&nbsp;
+                      <a href="#" onclick="calcularImc({ altura})" class="btn btn-success">Calcular</a>
+                  </div>
+                  </form>-->
+              </div>
+              <div class="card-footer text-muted">
+                Living
+                  <!-- Links de olvidar contraseña o condiciones-->
+              </div>
+          </div>
+      </div>
+  </div>
+  
+  
+  <table id="tablacontactos">
+  
+  </table>
+          <!--<link rel="stylesheet" href="@sweetalert2/themes/dark/dark.css">
+          <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>-->
+
+          <link rel="stylesheet" href="@sweetalert2/themes/dark/dark.css">
+          <script src="sweetalert2/dist/sweetalert2.min.js"></script>
+
+  </body>
+  {% endblock %}

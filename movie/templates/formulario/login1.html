@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block titulo %} Iniciar Sesión - Living {% endblock %}
+{% block colornav %}rgb(27, 75, 163){% endblock %}
+{% block contenido %}
+<div class="row">
+    <div class="col-12 col-md-6 offset-md-3">
+        <div class="card">
+            <div class="card-header">
+                Iniciar Sesión
+            </div>
+        <div class="card-body">
+            <h4 class="card-title">Ingresa tus Datos</h4><hr>
+            
+            <form action="" method="post">
+                {% csrf_token %}
+                    <input type="text" name="" id="">
+                    <input type="password" name="" id="">
+                    <input class="btn btn-success" type="submit" value="Ingresar">
+            </form>
+        </div>
+        <div class="card-footer text-muted">
+            Living
+        <!-- Links de olvidar contraseña o condiciones-->
+        </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

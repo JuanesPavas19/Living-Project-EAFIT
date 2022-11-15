@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block titulo %} Registro - Living {% endblock %}
+{% block colornav %}rgb(27, 75, 163){% endblock %}
+{% block contenido %}
+<div class="row">
+    <div class="col-12 col-md-6 offset-md-3">
+        <div class="card">
+            <div class="card-header">
+                Registro de Usuario
+            </div>
+        <div class="card-body">
+            <h4 class="card-title">Ingresa tus Datos</h4><hr>
+            
+            <form action="" method="post">
+                {% csrf_token %}
+                <!--{{form}}-->
+                <!--<input class="btn btn-success" type="submit" value="Ingresar">-->
+                    <!--<p>Nombre: <input class="form-control" type="text" name="" id="username"></p>
+                    <p>Contraseña: <input class="form-control" type="password" name="" id="password"></p>
+                    <input class="btn btn-success" type="submit" value="Ingresar">
+                    <hr>
+                    <p style="margin-bottom: 4px;">¿No te has registrado? <a href="register">Registrarme</a></p>-->
+                {% for campo in form %}
+                <div class="mb-3">
+                    <label for="" class="form-label">{{ campo.label }}</label>
+                    <input type="{{ campo.field.widget.input_type }}"
+                      class="form-control" 
+                      name="{{ campo.name }}" id="" aria-describedby="helpId" placeholder="{{ campo.label }}">
+                  </div>
+                  <div class="col-12 help-text">{{ campo.errors }}</div>
+
+                {% endfor %}
+                <input class="btn btn-success" type="submit" value="Registrar">
+                    <hr>
+                    <p style="margin-bottom: 4px;">¿Ya estás registrado? <a href="{% url 'login' %}">Iniciar Sesión</a></p>
+            </form>
+        </div>
+        <div class="card-footer text-muted">
+            Living
+        <!-- Links de olvidar contraseña o condiciones-->
+        </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

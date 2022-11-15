@@ -32,6 +32,12 @@
 <p>
     El ejercicio se inicia en la posición de plancha durante 3 o 5 segundos y luego los brazos se extienden hasta alcanzar la posición superior de la flexión de pecho. Es una rutina agotadora que demanda mucha resistencia pero con la que notarás buenos resultados. Repítela entre 6 y 8 veces en cada serie.
 </p>
+{% if user.is_authenticated %}
+<center><input name="" id="" class="btn btn-success" type="submit" value="Empezar"></center>
+
+{% else %}
 <center><a class="btn btn-success" href="{% url 'home' %}" role="button">Empezar</a></center>
+
+{% endif %}
 
 {% endblock %}

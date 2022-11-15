@@ -32,6 +32,12 @@
     Empieza con la posición de zancada alterna pero, además, integra un giro del torso para trabajar toda la parte del abdomen y espalda baja. Repite el ejercicio entre 8 y 10 veces.
 </p>
 
+{% if user.is_authenticated %}
+<center><input name="" id="" class="btn btn-success" type="submit" value="Empezar"></center>
+
+{% else %}
 <center><a class="btn btn-success" href="{% url 'home' %}" role="button">Empezar</a></center>
+
+{% endif %}
 
 {% endblock %}

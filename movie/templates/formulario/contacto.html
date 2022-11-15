@@ -1,13 +1,12 @@
+<!-- contacto1-->
 {% extends "base.html" %}
+
 {% block titulo %} Contacto - Living {% endblock %}
 {% block colornav %}rgb(27, 75, 163){% endblock %}
 {% block contenido %}
 {% load static %}
-
-
-
+<!--<link rel="stylesheet" href='{% static "css/estilo.css" %}' type='text/css' ">-->
 <body style="background-color: white">
-    
 <div class="row">
     <div class="col-12 col-md-6 offset-md-3">
         <div class="card">
@@ -15,30 +14,29 @@
                 Contactanos
             </div>
             <div class="card-body">
-                
-                <form action="" class="" method="post">
-                    <div class="mb-3">
+                <h4 class="card-title">Cuentanos...</h4>
+
+                <form enctype="multipart/form-data" method="post">
                     {% csrf_token %}
-                    
-                    <!--{{form}}Pasar a otro formtao-->
-                    <section class= "form-registro"><!-- {{formOferta}} sin estilos-->
-                        <h4 align="center"> Cuentanos... </h4>
-                        <input class="controles" type = "text" name = "nombre" id ="nombre" placeholder="Nombres Completos">
-                        <input class="controles" type = "email" name = "correo" id ="correo" placeholder="Correo Electrónico">
-                        <input class="controles" type = "text" name = "tipo_consulta" id ="tipo_consulta" placeholder="Tipo de Consulta">
-                        <input class="controles" type = "text" name = "mensaje" id ="mensaje" placeholder="Mensaje">
-                        {{mensaje}}
-                    </section>
-                    </div>
+                    {% for campo in formulario %}
+                      <div class="mb-3">
+                        <label for="" class="form-label">{{ campo.label }}</label>
+                        <input type="{{ campo.field.widget.input_type }}"
+                          class="form-control" 
+                          name="{{ campo.name }}" id="" aria-describedby="helpId" placeholder="{{ campo.label }}">
+                      </div>
+                      <div class="col-12 help-text">{{ campo.errors }}</div>
+                      {% endfor %}
+
+
                 <div class="d-flex justify-content-end">
                     <button type="reset" value="Cancelar" class="btn btn-secondary">Cancelar</button>&nbsp;
                     <button type="submit" id="btnEnviar" class="btn btn-success">Enviar</button>
                 </div>
                 </form>
-                {{mensaje}}
-        
             </div>
             <div class="card-footer text-muted">
+                Living
                 <!-- Links de olvidar contraseña o condiciones-->
             </div>
         </div>
@@ -51,37 +49,24 @@
 </table>
 </body>
 {% endblock %}
+
+
+
 <!--
-opciones_consulta = [
-    [0, "consulta"],
-    [1, "reclamo"],
-    [2, "sugerencia"],
-    [3, "felicitacion"]
-]
+    #opciones_consulta = [
+#    [0, "consulta"],
+#    [1, "reclamo"],
+#    [2, "sugerencia"],
+#    [3, "felicitacion"]
+#]
 class Contacto(models.Model):
     nombre = models.CharField(max_length=50)
     correo = models.EmailField()
-    tipo_consulta = models.IntegerField(choices=opciones_consulta)
-#    tipo_consulta = models.CharField(max_length=20)
+#    tipo_consulta = models.IntegerField(choices=opciones_consulta)
+    tipo_consulta = models.CharField(max_length=20)
     mensaje = models.TextField()
-    avisos = models.BooleanField()
+#    avisos = models.BooleanField()
 
     def __str__(self):
         return self.nombre
-
-
-
-
-
-        <h4 align="center"> Cuentanos... </h4>
-                        <input class="controles" type = "text" name = "nombre" id ="nombre" placeholder="Nombres Completos">
-                        <input class="controles" type = "email" name = "correo" id ="correo" placeholder="Correo Electrónico">
-                        <select class="controles" type = "text" name = "tipo" id ="tipo" placeholder="Tipo de Consulta">
-                            <option>consulta</option>
-                            <option>reclamo</option>
-                            <option>sugerencia</option>
-                            <option>felicitacion</option>
-                        </select>
-                        <input class="controles" type = "text" name = "mensaje" id ="mensaje" placeholder="Mensaje">
-                        <input class="controles" type = "checkbox" name = "avisos" id ="avisos" placeholder="Avisos">
-    -->
+-->

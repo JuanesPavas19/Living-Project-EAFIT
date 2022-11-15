@@ -29,6 +29,13 @@
     Muchos creen que lo único que adelgaza de las dietas es que nos obligan a comer menos cantidad o menos alimentos. Nada menos cierto, además de ser necesarios unas proteinas, vitaminas… para que la dieta no sea nociva para la salud, las propiedades de los alimentos de la dieta son beneficiosos para el mismo adelgazamiento y limpieza del organismo.
     De esta forma, la fibra de la piña y sus propiedades hacen que esta dieta sea especialmente efectiva. Es muy importante usar piñas de calidad y con todas sus propiedades.
 </p>
+{% if user.is_authenticated %}
 <center><a class="btn btn-success" href="{% url 'home' %}" role="button">Empezar</a></center>
+
+{% else %}
+<center><a class="btn btn-success" href="{% url 'home' %}" role="button">Empezar</a></center>
+
+{% endif %}
+
 
 {% endblock %}

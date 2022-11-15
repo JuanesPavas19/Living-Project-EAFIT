@@ -15,7 +15,7 @@
     
   
 </head>
-
+{% block js %}{% endblock %}
 <body><!--  navbar-light bg-light 
   background-color: rgba(12, 15, 185, 0.733);
   background-color: rgba(14, 119, 22, 0.733);
@@ -29,26 +29,56 @@
 
     <nav class="navbar navbar-expand"
       style="
-      background-color: {% block colornav %} {% endblock %} ;
+      
       font-style: italic ;
       font-weight: bolder;
       text-decoration: underline;
+      background-color: {% block colornav %} {% endblock %} ;
       ">
         <div class="nav navbar-nav">
           
-            <strong></strong><a class="nav-item nav-link active" href="{% url 'home' %}">
+            <a class="nav-item nav-link active" href="{% url 'home' %}">
             <img src='{% static "img/liv.png" %}' alt="LIVING" width="50px" height="50px">
             </a>
-            <strong><a class="nav-item nav-link active" href="{% url 'home' %}"></strong>
+            <a class="nav-item nav-link active" href="{% url 'home' %}">
               <img src='{% static "img/icon1.png" %}' alt="HOME" width="90px" height="50px">
             </a>
-            <strong><a class="nav-item nav-link active" style="background-color: white; font-size: 26px;" href="{% url 'about' %}">QUIENES SOMOS</a></strong>
-            <strong><a class="nav-item nav-link active" style="background-color: white; font-size: 26px;" href="{% url 'dietas' %}">DIETAS</a></strong>
-            <strong><a class="nav-item nav-link active" style="background-color: white; font-size: 26px;" href="{% url 'rutinas' %}">RUTINAS</a></strong>
+            <a class="nav-item nav-link active" style="
+            background-color: white; font-size: 26px;" href="{% url 'about' %}">Quienes Somos</a>&nbsp;
+            <a class="nav-item nav-link active" style="
+            background-color: white; font-size: 26px;" href="{% url 'dietas' %}">Dietas</a>&nbsp;
+            <a class="nav-item nav-link active" style="
+            background-color: white; font-size: 26px;" href="{% url 'rutinas' %}">Rutinas</a>&nbsp;
+            <a class="nav-item nav-link active" style="
+            background-color: white; font-size: 26px;" href="{% url 'contacto' %}">Contacto</a>&nbsp;
 
-            <strong><a class="nav-item nav-link active" style="background-color: white; font-size: 26px;" href="{% url 'register' %}">REGISTRAR</a></strong>
-            <!--<strong><a class="nav-item nav-link active" style="background-color: white; font-size: 26px;" href="{% url 'contacto' %}">Contacto</a></strong>-->
-            <strong><a class="nav-item nav-link active" style="background-color: white; font-size: 26px;" href="{% url 'contacto1' %}">CONTACTO</a></strong>
+            
+            
+            {% if user.is_authenticated %}
+            
+            <a class="nav-item nav-link active" style="
+            background-color: white; font-size: 26px; margin-right: 5px;" href="{% url 'logout' %}">Cerrar Sesión</a>&nbsp;
+            <a class="nav-item nav-link active" style="
+            background-color: white; font-size: 26px; margin-right: 5px;" 
+            href="#">@{{ user.username }}</a>&nbsp;
+            <a class="nav-item nav-link active" href="#">
+              <img src='{% static "img/perfil.png" %}' alt="Profile" width="50px" height="50px">
+              </a>
+
+            {% else %}
+            
+            <a class="nav-item nav-link active" style="
+            background-color: white; font-size: 26px; margin-right: 5px;" 
+            href="{% url 'login' %}">Iniciar Sesión</a>&nbsp;
+            <a class="nav-item nav-link active" style="
+            background-color: white; font-size: 26px; margin-right: 5px;" 
+            href="{% url 'registro' %}">Registrar</a>&nbsp;
+            
+
+            {% endif %}
+            
+            
+            
           
         </div>
     </nav>
@@ -87,7 +117,7 @@
             <a href="{% url 'rutinas' %}" class="text-reset">Rutinas</a>
           </p>
           <p>
-            <a href="{% url 'contacto1' %}" class="text-reset">Comentarios</a> <!--sin crear-->
+            <a href="{% url 'contacto' %}" class="text-reset">Comentarios</a> <!--sin crear-->
           </p>
         </div>
         <!-- Grid column -->
@@ -121,11 +151,12 @@
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
+  
   {% if messages %}
       {% for m in messages %}
           <script>
             Swal.fire({
-              "title": "{{m}}",
+              "title": "Datos Recibidos",
               "text": "{{m}}",
               "icon": "success"
             })

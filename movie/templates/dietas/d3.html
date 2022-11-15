@@ -24,6 +24,12 @@
 <p>
     No es nada recomendable alargar la dieta de la manzana porque no es saludable, tiene una gran carencia de nutrientes y una ingesta calórica muy baja. Lo que nos puede causar mareos, dolor de cabeza, cansancio, irritabilidad o fatiga. Si lo que buscas es perder peso de forma efectiva y segura, la única forma de conseguirlo sin poner en riesgo tu salud es ponerte en manos de profesionales, médicos, nutricionistas y expertos en la materia que se encarguen de diseñar una dieta a tu medida.
 </p>
+{% if user.is_authenticated %}
+<center><input name="" id="" class="btn btn-success" type="submit" value="Empezar"></center>
+
+{% else %}
 <center><a class="btn btn-success" href="{% url 'home' %}" role="button">Empezar</a></center>
+
+{% endif %}
 
 {% endblock %}

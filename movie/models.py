@@ -48,7 +48,21 @@ class Rutina(models.Model):
         falta = "nombre_rutina: "+ self.nombre_rutina
         return falta
 
-    #Se crean desde /admin
+class r_rutina(models.Model):
+    Idr_rutina = models.AutoField(primary_key=True, null = False)
+    Id_user = models.ForeignKey(Usuario, null= False, blank=False, on_delete=models.CASCADE)
+    Id_rutina = models.ForeignKey(Rutina, null= False, blank=False, on_delete=models.CASCADE)
+    fecha_inicio = models.DateField(null = False)
+
+
+class r_dieta(models.Model):
+    Idr_dieta = models.AutoField(primary_key=True, null = False)
+    Id_user = models.ForeignKey(Usuario, null= False, blank=False, on_delete=models.CASCADE)
+    Id_dieta = models.ForeignKey(Dieta, null= False, blank=False, on_delete=models.CASCADE)
+    fecha_inicio = models.DateField(null = False)
+
+
+    #Se crean desde /admin dietas y rutinas
 
     #Notas:-----------------------------
     #null=True, blank=TruePuede ser null excepto a momento de crearla, igual en el otro orden

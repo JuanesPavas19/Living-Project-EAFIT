@@ -15,11 +15,21 @@
             </p>
             <hr class="my-2">
             <p>Inicialmente serás llevado a un formulario que te preguntará tus datos básicos y así comprobar tu estado de salud, IMC, etc.</p>
-            <p class="lead">
+            <a class="btn btn-success" style="
+                background-color: rgb(27, 75, 163); border-color: rgb(255, 222, 37); border-width: 3px; border-radius: 8px;" 
+                href="revision" role="button">Revisar Mi Condición</a>
+                {% if user.is_authenticated %}
                 <a class="btn btn-success" style="
-                background-color: rgb(27, 75, 163); border-color: rgb(255, 222, 37); border-width: 5px; border-radius: 10px;" 
-                href="form" role="button">Revisar Mi Condición</a>
-            </p>
+                background-color: rgb(27, 75, 163); border-color: rgb(255, 222, 37); border-width: 3px; border-radius: 8px; margin-left: 45px;" 
+                href="register" role="button">Registrar mis datos Completos</a>
+
+                {% else %}
+                <a class="btn btn-success" style="
+                background-color: rgb(27, 75, 163); border-color: rgb(255, 222, 37); border-width: 3px; border-radius: 8px; margin-left: 45px;" 
+                href="registro" role="button">Registrarme</a>
+
+                {% endif %}
+            
     </div>
 </div>
 

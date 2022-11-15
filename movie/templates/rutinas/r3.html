@@ -32,6 +32,12 @@
     Es un trabajo que te ayudará a liberar estrés y quemar calorías rápidamente. Flexiona un poco las rodillas y lanza golpes al frente con los puños. Durante 5 minutos realizarás un trabajo cardiovascular muy eficaz. Este entrenamiento es ideal para culminar los sets de entrenamiento.
 </p>
 
+{% if user.is_authenticated %}
+<center><input name="" id="" class="btn btn-success" type="submit" value="Empezar"></center>
+
+{% else %}
 <center><a class="btn btn-success" href="{% url 'home' %}" role="button">Empezar</a></center>
+
+{% endif %}
 
 {% endblock %}
